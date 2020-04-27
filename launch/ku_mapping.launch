@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- 		
+	-->
+	<node pkg="ku_mapping" type="vnpub" name="ins" output="screen" > 
+		<rosparam command="load" file="$(find ku_mapping)/params/vn300.yaml" />	  
+	</node>	
+		
+	<node pkg="ku_mapping" type="fcpub" name="fcpub" output="screen" launch-prefix="nice -n 10">
+	</node>
+	
+	<!--
+	<node pkg="ku_mapping" type="fcpub" name="fcpub2" output="screen">
+	</node> 
+	-->
+	
+	<node pkg="ku_mapping" type="fcpub" name="fcpub3" output="screen">
+	</node> 
+	
+	<node pkg="ku_mapping" type="tgpub" name="tgpub" output="screen" >
+		<param name="trigger_min_nanosecond" value="1870000.0"/> <!-- 1835 -->
+		<param name="trigger_max_nanosecond" value="1900010.0"/>
+	</node>
+	
+
+	<!-- 	-->
+	<node pkg="ku_mapping" type="checkpoint" name="checkpoint" output="screen" >   
+		<param name="file_folder" value="/media/pi/Project1/data_files/"/>
+		<param name="picture_interval_nsec" value="1 "/>
+	</node>	
+
+
+</launch>
+
+
